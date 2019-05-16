@@ -76,7 +76,15 @@ synergyc (ip do servidor)
     #usar nome gerado e principal(gerado no comando anterior)
     aws iot attach-thing-principal --thing-name "clitest1" --principal "arn:aws:iot:us-east-1:603656461584:cert/09628a3525b7796c6d7c5cb5bda5aa58f9d0f35ccc9fdabb345e000ff86a351e"
 
-    #baixa e criar politica de uso IoT
+    #baixa e criar politica de uso IoT (colocar política no git)
+    aws iot create-policy --policy-name IoTGate --policy-document file://IoTPolicy.json
+
+    #anexar a política na coisa precisa do ARN !DO CERTIFICADO! criado na hora de gerar a coisa
+    aws iot attach-policy --policy-name "IoTGate" --target "arn:aws:iot:us-east-1:603656461584:cert/09628a3525b7796c6d7c5cb5bda5aa58f9d0f35ccc9fdabb345e000ff86a351e"
+
+    #criar thing shadow 
+    aws iot-data (ver comandos mais pra frente)
+
 
 ## 
 
