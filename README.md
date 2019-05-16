@@ -29,16 +29,40 @@ sudo apt-get update
 
 sudo apt-get upgrade
 
-- se quiser synergy para trabalhar
+## se quiser synergy para trabalhar ##
 
 sudo apt-get install synergy
 
 synergyc (ip do servidor)
 
-Requisitos CLI AWS:
+## end synergy##
+
+##nstalling PIP:##
 
 #download de scripts de instalação
     curl -O https://bootstrap.pypa.io/get-pip.py
 
 #executar os scripts para insalação (instalado em ~/.local/bin)
     python get-pip.py --user
+
+##end pip##
+
+## install aws cli ##
+
+#install in user and check for upgrades
+    pip3 install awscli --upgrade --user
+
+    export PATH=~/.local/bin:$PATH
+
+    #Create credentials to acess te tools you want
+    #https://www.youtube.com/watch?time_continue=225&v=_f0d2pLJjiA
+
+    aws configure
+    #put credentials and other things
+
+## end aws cli
+
+
+
+## If you dont have a IAM for acess:
+
