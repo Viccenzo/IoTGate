@@ -39,17 +39,17 @@ synergyc (ip do servidor)
 
 ##nstalling PIP:##
 
-#download de scripts de instalação
+# download de scripts de instalação
     curl -O https://bootstrap.pypa.io/get-pip.py
 
 #executar os scripts para insalação (instalado em ~/.local/bin)
     python get-pip.py --user
 
-##end pip##
+## end pip##
 
 ## install aws cli ##
 
-#install in user and check for upgrades
+## install in user and check for upgrades and connect 
     pip3 install awscli --upgrade --user
 
     export PATH=~/.local/bin:$PATH
@@ -60,9 +60,26 @@ synergyc (ip do servidor)
     aws configure
     #put credentials and other things
 
-## end aws cli
+## end aws cli 
+
+## create thing in aws
+
+# create a thing with a name and atribute required
+    
+    #gerar id aleatório no futuro
+    aws iot create-thing --thing-name "clitest1" --attribute-payload "{}"
+
+# create Cer priv and pub keys
+
+    aws iot create-keys-and-certificate --set-as-active --certificate-pem-outfile "Cer-PEM" --public-key-outfile "Pub-KEY" --private-key-outfile "Priv-KEY"
+
+    #usar nome gerado e principal(gerado no comando anterior)
+    aws iot attach-thing-principal --thing-name "clitest1" --principal "arn:aws:iot:us-east-1:603656461584:cert/09628a3525b7796c6d7c5cb5bda5aa58f9d0f35ccc9fdabb345e000ff86a351e"
+
+    #baixa e criar politica de uso IoT
+
+## 
 
 
 
-## If you dont have a IAM for acess:
 
